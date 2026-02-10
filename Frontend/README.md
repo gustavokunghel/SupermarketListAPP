@@ -1,50 +1,116 @@
-# Welcome to your Expo app 👋
+# Frontend - SupermarketList
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicativo mobile de lista de compras desenvolvido com React Native e Expo.
 
-## Get started
+## 📱 Sobre o Projeto
 
-1. Install dependencies
+App para gerenciar listas de compras de supermercado. Permite adicionar produtos, ajustar
+quantidades e visualizar o total de itens na lista.
 
-   ```bash
-   npm install
-   ```
+## 🚀 Tecnologias
 
-2. Start the app
+- **React Native**: Framework para desenvolvimento mobile
+- **Expo**: Plataforma de desenvolvimento e build
+- **TypeScript**: Linguagem tipada
+- **Expo Router**: Navegação baseada em arquivos
+- **Zustand**: Gerenciamento de estado global
+- **TanStack Query (React Query)**: Gerenciamento de dados assíncronos e cache
+- **FlashList**: Lista otimizada para performance
+- **Phosphor React Native**: Ícones
+- **Inter Font** (Google Fonts): Tipografia
 
-   ```bash
-   npx expo start
-   ```
+## 📂 Estrutura do Projeto
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+Frontend/
+├── app/                      # Rotas do app (file-based routing)
+│   ├── _layout.tsx          # Layout raiz com providers
+│   ├── index.tsx            # Tela principal (lista de compras)
+│   └── list.tsx             # Tela de adicionar produtos
+├── components/              # Componentes reutilizáveis
+│   ├── AddButton.tsx        # Botão de adicionar itens
+│   └── ItemRowCard.tsx      # Card de item da lista
+├── hooks/                   # Custom hooks
+│   ├── useProducts.ts       # Hook para buscar produtos da API
+│   └── useTheme.ts          # Hook para tema/cores
+├── store/                   # Gerenciamento de estado
+│   └── useProductStore.ts   # Store Zustand para carrinho
+├── styles/                  # Tokens de design
+│   ├── borderRadius.ts      # Constantes de border radius
+│   ├── colors.ts            # Paleta de cores
+│   ├── fontSizes.ts         # Tamanhos de fonte
+│   └── index.ts             # Export barrel
+└── assets/                  # Imagens e recursos estáticos
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🎨 Funcionalidades
 
-## Learn more
+- ✅ Listagem de produtos disponíveis
+- ✅ Adicionar/remover produtos da lista
+- ✅ Ajustar quantidade de cada item
+- ✅ Contador total de itens
+- ✅ Persistência local com AsyncStorage
+- ✅ Design system consistente
+- ✅ Paginação infinita de produtos
+- ✅ Estado vazio com feedback visual
+- ✅ Performance otimizada com FlashList
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🛠️ Como Rodar
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Pré-requisitos
 
-## Join the community
+- Node.js (v16 ou superior)
+- npm ou yarn
+- Expo CLI
+- App Expo Go no celular (ou emulador Android/iOS)
 
-Join our community of developers creating universal apps.
+### Instalação
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+# Instalar dependências
+npm install
+
+# Iniciar o servidor de desenvolvimento
+npm start
+```
+
+### Executar no Dispositivo
+
+Após iniciar o servidor, você verá um QR code no terminal. Use o app Expo Go para escanear
+e testar.
+
+Ou use as teclas de atalho:
+
+- `a` - Abrir no Android
+- `i` - Abrir no iOS
+- `w` - Abrir no navegador
+
+## 🔌 Configuração da API
+
+O app se conecta ao backend através da URL configurada em
+[hooks/useProducts.ts](hooks/useProducts.ts).
+
+Certifique-se de que o backend está rodando em `http://localhost:3000` antes de iniciar o
+app.
+
+## 📦 Build para Produção
+
+```bash
+# Build para Android
+npm run android
+
+# Build para iOS
+npm run ios
+```
+
+## 🎯 Decisões Técnicas
+
+- **Zustand**: Escolhido por ser simples, performático e sem boilerplate
+- **TanStack Query**: Gerencia cache e estados de loading/error automaticamente
+- **FlashList**: Substitui FlatList para melhor performance em listas grandes
+- **Expo Router**: Navegação moderna e intuitiva baseada em sistema de arquivos
+- **TypeScript**: Segurança de tipos e melhor DX
+
+## 📸 Screenshots
+
+Veja os prints do app na pasta [screenshots](../screenshots/README.md)
